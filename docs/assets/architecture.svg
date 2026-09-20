@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#52514e"/></marker>
+    <style>
+      .box{fill:#fcfcfb;stroke:#2a78d6;stroke-width:2;rx:12}
+      .box2{fill:#fcfcfb;stroke:#eb6834;stroke-width:2}
+      .box3{fill:#fcfcfb;stroke:#1baf7a;stroke-width:2}
+      .box4{fill:#fcfcfb;stroke:#4a3aa7;stroke-width:2}
+      .t{font-size:15px;font-weight:700;fill:#0b0b0b}
+      .s{font-size:12px;fill:#52514e}
+      .e{stroke:#52514e;stroke-width:2;fill:none;marker-end:url(#a)}
+      .flow{stroke:#2a78d6;stroke-width:3;fill:none;stroke-dasharray:8 8;animation:dash 1.2s linear infinite}
+      @keyframes dash{to{stroke-dashoffset:-32}}
+    </style>
+  </defs>
+  <rect width="1100" height="560" fill="#ffffff"/>
+  <!-- data -->
+  <rect x="30" y="40" width="230" height="110" rx="12" class="box"/>
+  <text x="45" y="65" class="t">data/raw</text>
+  <text x="45" y="88" class="s">PSE csdac-pln (15-min SDAC prices)</text>
+  <text x="45" y="106" class="s">energy-charts DA prices, NBP FX</text>
+  <text x="45" y="124" class="s">TGE monthly reports (forwards)</text>
+  <!-- prices -->
+  <rect x="320" y="40" width="250" height="110" rx="12" class="box"/>
+  <text x="335" y="65" class="t">prices.py — market twin</text>
+  <text x="335" y="88" class="s">8,760-h reference year → shape model</text>
+  <text x="335" y="106" class="s">re-anchor on annual mean path</text>
+  <text x="335" y="124" class="s">+ solar cannibalisation per year</text>
+  <!-- assumptions -->
+  <rect x="640" y="40" width="230" height="110" rx="12" class="box4"/>
+  <text x="655" y="65" class="t">assumptions/default.yaml</text>
+  <text x="655" y="88" class="s">every parameter [low, central, high]</text>
+  <text x="655" y="106" class="s">≈200 sources, config.resolve(case)</text>
+  <text x="655" y="124" class="s">per-block overrides (smr/market/…)</text>
+  <!-- smr -->
+  <rect x="120" y="220" width="300" height="120" rx="12" class="box"/>
+  <text x="135" y="245" class="t">smr.py — BWRX-300 twin</text>
+  <text x="135" y="268" class="s">870 MWt / 300 MWe · 18-mo refuelling · EFOR</text>
+  <text x="135" y="286" class="s">50–100 % load-following, 0.5 %/min ramp</text>
+  <text x="135" y="304" class="s">LP dispatch (HiGHS) · CfD settlement</text>
+  <text x="135" y="322" class="s">marginal cost = fuel + VOM + fund</text>
+  <!-- gas -->
+  <rect x="460" y="220" width="300" height="120" rx="12" class="box2"/>
+  <text x="475" y="245" class="t">gas.py — CCGT / OCGT / engines</text>
+  <text x="475" y="268" class="s">2-segment heat rate · min load · min up/down</text>
+  <text x="475" y="286" class="s">hot/warm/cold starts · EUA cost</text>
+  <text x="475" y="304" class="s">weekly UC-MILP (HiGHS)</text>
+  <text x="475" y="322" class="s">+ DP heuristic (≤1 % gap) for Monte Carlo</text>
+  <!-- finance -->
+  <rect x="120" y="400" width="300" height="120" rx="12" class="box3"/>
+  <text x="135" y="425" class="t">finance.py — cash flows &amp; tax</text>
+  <text x="135" y="448" class="s">S-curve capex · KŚT depreciation · CIT 19 %</text>
+  <text x="135" y="466" class="s">NPV / IRR / LCOE / levelised revenue</text>
+  <text x="135" y="484" class="s">property tax (art. 50 split), JST CIT/PIT shares</text>
+  <text x="135" y="502" class="s">optional debt overlay (DSCR, equity IRR)</text>
+  <!-- optimise -->
+  <rect x="460" y="400" width="300" height="120" rx="12" class="box3"/>
+  <text x="475" y="425" class="t">optimise.py</text>
+  <text x="475" y="448" class="s">break-even strike / capex / premium (Brent)</text>
+  <text x="475" y="466" class="s">integer portfolio optimum (≥300 MW firm)</text>
+  <text x="475" y="484" class="s">LHS Monte Carlo · tornado</text>
+  <!-- outputs -->
+  <rect x="820" y="220" width="250" height="300" rx="12" class="box4"/>
+  <text x="835" y="245" class="t">outputs</text>
+  <text x="835" y="272" class="s">results/summary.csv</text>
+  <text x="835" y="290" class="s">results/&lt;case&gt;/&lt;scenario&gt;/*</text>
+  <text x="835" y="308" class="s">figures/*.png</text>
+  <text x="835" y="326" class="s">docs/RESULTS.md</text>
+  <text x="835" y="360" class="t">build_excel.py →</text>
+  <text x="835" y="382" class="s">Excel model, 27k live formulas</text>
+  <text x="835" y="400" class="s">Dashboard · Input · Model_* · Twin</text>
+  <text x="835" y="440" class="t">scenarios.py / run_all.py</text>
+  <text x="835" y="462" class="s">S1a CfD · S1b fixed · S1c merchant</text>
+  <text x="835" y="480" class="s">S2 dynamic · S3a–d gas</text>
+  <!-- edges -->
+  <path d="M260,95 L320,95" class="e"/>
+  <path d="M445,150 L300,220" class="flow"/>
+  <path d="M445,150 L600,220" class="flow"/>
+  <path d="M755,150 L640,220" class="e"/>
+  <path d="M755,150 L270,220" class="e"/>
+  <path d="M270,340 L270,400" class="flow"/>
+  <path d="M610,340 L330,400" class="flow"/>
+  <path d="M420,460 L460,460" class="e"/>
+  <path d="M760,460 L820,460" class="flow"/>
+  <path d="M760,280 L820,280" class="e"/>
+</svg>

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/raw/*.csv
+!data/raw/README.md
+results/**/hourly_*.csv
+results_run.log
+.DS_Store
